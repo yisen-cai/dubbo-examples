@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <description>Dubbo example project provider</description>
+
+    <context:property-placeholder/>
+
+    <dubbo:application name="dubbo-examples-provider"/>
+
+    <dubbo:protocol name="dubbo" port="-1"/>
+
+    <dubbo:registry id="dubbo-registry" address="zookeeper://172.19.103.215:2181" timeout="10000"/>
+
+    <bean id="bookService" class="com.glancebar.example.provider.service.BookServiceImpl"/>
+
+    <dubbo:service interface="com.glancebar.example.api.service.BookService" ref="bookService"
+                   protocol="dubbo"
+                   version="0.0.1"
+    />
+</beans>
