@@ -1,7 +1,7 @@
 package com.glancebar.example.consumer.controller;
 
 import com.glancebar.example.api.service.BookService;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books")
 public class BookController {
 
-    @Reference(version = "0.0.1", registry = {"dubbo-registry"})
+    @DubboReference(version = "0.0.1")
     private BookService bookService;
 
     @GetMapping("/search")
