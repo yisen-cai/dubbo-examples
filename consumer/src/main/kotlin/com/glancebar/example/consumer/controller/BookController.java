@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books")
 public class BookController {
 
-    @Reference(version = "0.0.1")
+    @Reference(version = "0.0.1", registry = {"dubbo-registry"})
     private BookService bookService;
 
     @GetMapping("/search")
