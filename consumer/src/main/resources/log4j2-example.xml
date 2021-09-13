@@ -30,8 +30,7 @@
             <AppenderRef ref="RollingFile"/>
         </Root>
 
-        <!-- LOG "com.baeldung*" at TRACE level -->
-        <Logger name="com.glancebar" level="trace"></Logger>
+        <Logger name="com.glancebar" level="trace"/>
     </Loggers>
 
 </Configuration>
