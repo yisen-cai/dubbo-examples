@@ -14,11 +14,11 @@
 
     <dubbo:registry id="dubbo-registry" address="zookeeper://l-fq0.fresh.cn1:2181" timeout="10000"/>
 
-    <bean id="bookService" class="com.glancebar.example.provider.service.BookServiceImpl"/>
+<!--    <bean id="bookService" class="com.glancebar.example.provider.service.BookServiceImpl"/>-->
 
-    <dubbo:service interface="com.glancebar.example.api.service.BookService" ref="bookService"
-                   protocol="dubbo"
-                   version="0.0.1"
-                   timeout="3000"
-    />
+<!--    <dubbo:service interface="com.glancebar.example.api.service.BookService" ref="bookService"-->
+<!--                   protocol="dubbo"-->
+<!--                   version="0.0.1"-->
+<!--                   timeout="3000"-->
+<!--    />-->
 </beans>
