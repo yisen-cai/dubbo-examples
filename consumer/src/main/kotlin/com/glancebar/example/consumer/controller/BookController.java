@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-
+    /**
+     * 通过注解引用
+     */
     @DubboReference(version = "0.0.1")
     private BookService bookService;
 

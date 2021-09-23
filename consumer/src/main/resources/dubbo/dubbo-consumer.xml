@@ -10,11 +10,12 @@
 
     <dubbo:application name="dubbo-examples-consumer"/>
 
-    <dubbo:protocol name="dubbo" port="-1"/>
+    <dubbo:protocol name="dubbo" port="20881"/>
 
     <dubbo:consumer check="true" timeout="6000"/>
 
     <dubbo:registry id="dubbo-registry" address="zookeeper://l-fq0.fresh.cn1:2181" timeout="10000"/>
 
-<!--    <dubbo:reference interface="com.glancebar.example.api.service.BookService" version="0.0.1" protocol="dubbo"/>-->
+    <!-- 通过配置文件引用 -->
+    <!--    <dubbo:reference interface="com.glancebar.example.api.service.BookService" version="0.0.1" protocol="dubbo"/>-->
 </beans>

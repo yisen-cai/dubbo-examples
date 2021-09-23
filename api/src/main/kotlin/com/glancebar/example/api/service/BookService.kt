@@ -4,7 +4,7 @@ import com.glancebar.example.api.dto.BookDTO
 
 
 /**
- *
+ * 一个接口示例
  * @author YISHEN CAI
  */
 interface BookService {
