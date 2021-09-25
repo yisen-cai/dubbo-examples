@@ -10,11 +10,19 @@
 
     <dubbo:application name="dubbo-examples-consumer"/>
 
-    <dubbo:protocol name="dubbo" port="-1"/>
+<!--    <dubbo:protocol name="dubbo" port="-1"-->
+<!--                    dispatcher="all"-->
+<!--                    threadpool="fixed"-->
+<!--                    threads="100"-->
+<!--    />-->
 
-    <dubbo:consumer check="true" timeout="6000"/>
+    <dubbo:consumer check="false" timeout="6000"/>
 
-    <dubbo:registry id="dubbo-registry" address="zookeeper://l-fq0.fresh.cn1:2181" timeout="10000"/>
+    <dubbo:registry id="dubbo-registry" address="zookeeper://172.28.137.212:2181" timeout="10000" check="false"/>
 
-<!--    <dubbo:reference interface="com.glancebar.example.api.service.BookService" version="0.0.1" protocol="dubbo"/>-->
+<!--    <dubbo:reference interface="com.glancebar.example.api.service.BookService" version="0.0.1" protocol="dubbo"-->
+<!--                     cluster="failsafe" loadbalance="roundrobin">-->
+<!--        &lt;!&ndash; loadbalance: roundrobin, random, leastactive, consistenthash(default 160 nodes)&ndash;&gt;-->
+<!--        <dubbo:method name="searchByMatch" retries="2"/>-->
+<!--    </dubbo:reference>-->
 </beans>
