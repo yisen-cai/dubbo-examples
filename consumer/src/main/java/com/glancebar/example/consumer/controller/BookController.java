@@ -3,6 +3,7 @@ package com.glancebar.example.consumer.controller;
 import com.glancebar.example.api.dto.BookDTO;
 import com.glancebar.example.api.service.BookService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +28,10 @@ public class BookController {
     @PostMapping("/validate")
     public ResponseEntity<?> validateBook(@RequestBody BookDTO bookDTO) {
         try {
-            bookService.addBook(bookDTO);
+            return ResponseEntity.ok(bookService.addBook(bookDTO));
         } catch (Exception e) {
             // do something.
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-        return ResponseEntity.badRequest().build();
     }
 }

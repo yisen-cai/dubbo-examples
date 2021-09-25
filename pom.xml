@@ -13,6 +13,7 @@
         <module>api</module>
         <module>provider</module>
         <module>consumer</module>
+        <module>commons</module>
     </modules>
 
     <properties>
@@ -84,6 +85,12 @@
             <dependency>
                 <groupId>com.glancebar</groupId>
                 <artifactId>api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.glancebar</groupId>
+                <artifactId>commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -15,7 +15,7 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!--    <dubbo:registry id="hangzhouRegistry" address="****"/>-->
-    <dubbo:registry id="dubbo-registry" address="zookeeper://172.28.137.212:2181" timeout="10000" dynamic="false"/>
+    <dubbo:registry id="dubbo-registry" address="zookeeper://172.30.36.188:2181" timeout="10000" dynamic="false"/>
 
     <!--    <bean id="bookService" class="com.glancebar.example.provider.service.BookServiceImpl"/>-->
 

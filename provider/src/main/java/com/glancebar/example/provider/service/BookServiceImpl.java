@@ -1,6 +1,7 @@
 package com.glancebar.example.provider.service;
 
 
+import com.glancebar.commons.CommonHandling;
 import com.glancebar.example.api.dto.BookDTO;
 import com.glancebar.example.api.service.BookService;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -21,9 +22,13 @@ public class BookServiceImpl implements BookService {
         return Arrays.asList(new BookDTO("Book Name", "Book ISBN"));
     }
 
+    @CommonHandling(message = "hello", countLastTime = true, errPropagating = true)
     @Override
     public BookDTO addBook(BookDTO bookDTO) {
-        return null;
+        if (bookDTO.getName().contains("Book")) {
+            throw new RuntimeException("非法参数");
+        }
+        return bookDTO;
     }
 
 }

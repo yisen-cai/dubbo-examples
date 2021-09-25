@@ -1,5 +1,6 @@
 package com.glancebar.example.api.dto;
 
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +17,9 @@ public class BookDTO implements Serializable {
         this.isbn = isbn;
     }
 
+    public BookDTO() {
+    }
+
     public String getName() {
         return name;
     }
@@ -30,5 +34,13 @@ public class BookDTO implements Serializable {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public String toString() {
+        return "BookDTO{" +
+                "name='" + name + '\'' +
+                ", isbn='" + isbn + '\'' +
+                '}';
     }
 }
