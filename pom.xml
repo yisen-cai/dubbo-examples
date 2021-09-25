@@ -18,10 +18,10 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <source.level>1.8</source.level>
         <target.level>1.8</target.level>
         <dubbo.version>2.7.8</dubbo.version>
-        <kotlin.version>1.5.10</kotlin.version>
         <spring.version>5.2.2.RELEASE</spring.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <junit.version>4.13.2</junit.version>

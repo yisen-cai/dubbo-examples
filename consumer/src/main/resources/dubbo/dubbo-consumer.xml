@@ -15,6 +15,7 @@
 <!--                    threadpool="fixed"-->
 <!--                    threads="100"-->
 <!--    />-->
+    <dubbo:protocol name="dubbo" port="20881"/>
 
     <dubbo:consumer check="false" timeout="6000"/>
 
@@ -25,4 +26,6 @@
 <!--        &lt;!&ndash; loadbalance: roundrobin, random, leastactive, consistenthash(default 160 nodes)&ndash;&gt;-->
 <!--        <dubbo:method name="searchByMatch" retries="2"/>-->
 <!--    </dubbo:reference>-->
+    <!-- 通过配置文件引用 -->
+    <!--    <dubbo:reference interface="com.glancebar.example.api.service.BookService" version="0.0.1" protocol="dubbo"/>-->
 </beans>

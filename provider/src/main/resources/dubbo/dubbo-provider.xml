@@ -10,7 +10,7 @@
 
     <dubbo:application name="dubbo-examples-provider"/>
 
-    <dubbo:protocol name="rmi" port="1099"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
 
     <dubbo:protocol name="dubbo" port="20880"/>
 
@@ -25,4 +25,11 @@
     <!--                   group="example"-->
     <!--    />-->
     <!-- protocol="dubbo,rmi"-->
+<!--    <bean id="bookService" class="com.glancebar.example.provider.service.BookServiceImpl"/>-->
+
+<!--    <dubbo:service interface="com.glancebar.example.api.service.BookService" ref="bookService"-->
+<!--                   protocol="dubbo"-->
+<!--                   version="0.0.1"-->
+<!--                   timeout="3000"-->
+<!--    />-->
 </beans>
