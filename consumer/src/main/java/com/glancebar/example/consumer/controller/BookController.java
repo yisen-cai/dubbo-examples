@@ -21,6 +21,7 @@ public class BookController {
 
     @GetMapping("/search")
     public ResponseEntity<?> searchBooks(@RequestParam String kw) {
+        System.out.println("hello world");
         return ResponseEntity.ok(bookService.searchByMatch(kw));
     }
 

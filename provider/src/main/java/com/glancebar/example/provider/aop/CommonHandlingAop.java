@@ -45,6 +45,7 @@ public class CommonHandlingAop {
             logger.info(commonHandling.finishMsg());
 
             if (commonHandling.countLastTime()) {
+                // log last time....
                 logger.info("invoke method last: {} milliseconds", System.currentTimeMillis() - start);
             }
             return proceed;
