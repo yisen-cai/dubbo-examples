@@ -6,12 +6,16 @@ import com.glancebar.example.api.dto.BookDTO;
 import com.glancebar.example.api.service.AsyncService;
 import com.glancebar.example.api.service.BookService;
 import com.glancebar.example.api.service.CallbackService;
+import com.glancebar.example.api.service.IDemoService;
+import com.glancebar.example.api.service.Person;
+import com.glancebar.example.callback.Notify;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +34,14 @@ public class BookController {
      */
     @DubboReference(version = "0.0.1")
     private BookService bookService;
+
+    @Autowired
+    private Notify demoCallback;
+
+    @DubboReference(version = "0.0.1", group = "cn", methods = {
+        @Method(name = "get", async = false, onreturn = "demoCallback.onReturn", onthrow = "demoCallback.onThrow")
+    })
+    private IDemoService normalDemoService;
 
     @DubboReference(version = "0.0.1", methods = { @Method(name="sayHelloAgain", async = true) }, timeout = 10000)
     private AsyncService asyncService;
@@ -105,5 +117,11 @@ public class BookController {
             logger.info("callback message is: ", msg);
         });
         return null;
+    }
+
+    @PostMapping("/callback-notify")
+    public ResponseEntity<?> callbackNotify(@RequestParam Integer id) {
+        Person person = normalDemoService.get(id);
+        return ResponseEntity.ok(person);
     }
 }
