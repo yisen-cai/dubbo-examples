@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import com.glancebar.example.api.dto.BookDTO;
 import com.glancebar.example.api.service.AsyncService;
 import com.glancebar.example.api.service.BookService;
+import com.glancebar.example.api.service.CallbackService;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -32,6 +33,9 @@ public class BookController {
 
     @DubboReference(version = "0.0.1", methods = { @Method(name="sayHelloAgain", async = true) }, timeout = 10000)
     private AsyncService asyncService;
+
+    @DubboReference(version = "0.0.1")
+    private CallbackService callbackService;
 
     @GetMapping("/search")
     public ResponseEntity<?> searchBooks(@RequestParam String kw) {
@@ -91,6 +95,15 @@ public class BookController {
             }
         });
 
+        return null;
+    }
+
+
+    @PostMapping("/callback")
+    public ResponseEntity<?> callbackService(@RequestParam String param) {
+        callbackService.addListener(param, (msg) -> {
+            logger.info("callback message is: ", msg);
+        });
         return null;
     }
 }
