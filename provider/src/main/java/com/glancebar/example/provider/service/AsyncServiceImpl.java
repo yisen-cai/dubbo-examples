@@ -33,7 +33,7 @@ public class AsyncServiceImpl implements AsyncService {
             asyncContext.signalContextSwitch();
             try {
                 Thread.sleep(500);
-            } catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             // 写回应
@@ -41,5 +41,5 @@ public class AsyncServiceImpl implements AsyncService {
         }).start();
         return null;
     }
-    
+
 }

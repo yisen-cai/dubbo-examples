@@ -39,11 +39,10 @@ public class BookController {
     private Notify demoCallback;
 
     @DubboReference(version = "0.0.1", group = "cn", methods = {
-        @Method(name = "get", async = false, onreturn = "demoCallback.onReturn", onthrow = "demoCallback.onThrow")
-    })
+            @Method(name = "get", async = false, onreturn = "demoCallback.onReturn", onthrow = "demoCallback.onThrow") })
     private IDemoService normalDemoService;
 
-    @DubboReference(version = "0.0.1", methods = { @Method(name="sayHelloAgain", async = true) }, timeout = 10000)
+    @DubboReference(version = "0.0.1", methods = { @Method(name = "sayHelloAgain", async = true) }, timeout = 10000)
     private AsyncService asyncService;
 
     @DubboReference(version = "0.0.1")
@@ -57,7 +56,6 @@ public class BookController {
         RpcContext.getContext().setAttachment("index", "1");
         return ResponseEntity.ok(bookService.searchByMatch(kw));
     }
-
 
     @PostMapping("/validate")
     public ResponseEntity<?> validateBook(@RequestBody BookDTO bookDTO) {
@@ -73,21 +71,21 @@ public class BookController {
     public ResponseEntity<?> asyncInvoke(@RequestParam String param) {
         CompletableFuture<String> future = asyncService.sayHello(param);
         future.whenComplete((v, t) -> {
-            if(t != null) {
+            if (t != null) {
                 t.printStackTrace();
             } else {
                 logger.info("async result is " + v);
             }
         });
         return null;
-    } 
-    
+    }
+
     @PostMapping("/async-again")
     public ResponseEntity<?> asyncInvokeAgain(@RequestParam String param) {
         asyncService.sayHelloAgain(param);
         CompletableFuture<String> helloFuture = RpcContext.getContext().getCompletableFuture();
         helloFuture.whenComplete((retValue, exception) -> {
-            if(exception == null) {
+            if (exception == null) {
                 logger.info("async result is " + retValue);
             } else {
                 exception.printStackTrace();
@@ -100,7 +98,7 @@ public class BookController {
         });
 
         future.whenComplete((retValue, exception) -> {
-            if(exception == null) {
+            if (exception == null) {
                 logger.info("async result is " + retValue);
             } else {
                 exception.printStackTrace();
@@ -109,7 +107,6 @@ public class BookController {
 
         return null;
     }
-
 
     @PostMapping("/callback")
     public ResponseEntity<?> callbackService(@RequestParam String param) {

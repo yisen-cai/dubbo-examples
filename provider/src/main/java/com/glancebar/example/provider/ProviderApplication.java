@@ -11,14 +11,8 @@ import org.springframework.context.annotation.ImportResource;
  * @author YISHEN CAI
  */
 @SpringBootApplication
-@ImportResource(
-        value = {
-                "classpath:dubbo/dubbo-provider.xml"
-        }
-)
-@DubboComponentScan(basePackages = {
-        "com.glancebar.example.provider.service"
-})
+@ImportResource(value = { "classpath:dubbo/dubbo-provider.xml" })
+@DubboComponentScan(basePackages = { "com.glancebar.example.provider.service" })
 public class ProviderApplication {
 
     public static void main(String[] args) {

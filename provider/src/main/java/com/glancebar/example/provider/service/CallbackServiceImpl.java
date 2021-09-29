@@ -12,26 +12,23 @@ import org.apache.dubbo.config.annotation.Argument;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 
-@DubboService(version="0.0.1", methods = {
-    @Method(name = "addListener", arguments = {
-        @Argument(index = 1, callback = true)}
-    )
-})
+@DubboService(version = "0.0.1", methods = {
+        @Method(name = "addListener", arguments = { @Argument(index = 1, callback = true) }) })
 public class CallbackServiceImpl implements CallbackService {
-    
+
     private final Map<String, CallbackListener> listeners = new ConcurrentHashMap<>();
 
     public CallbackServiceImpl() {
-        Thread t = new Thread(new Runnable(){
+        Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true) {
+                while (true) {
                     try {
-                        for(Map.Entry<String, CallbackListener> entry: listeners.entrySet()) {
+                        for (Map.Entry<String, CallbackListener> entry : listeners.entrySet()) {
                             entry.getValue().changed(entry.getKey());
                         }
                         Thread.sleep(5000);
-                    } catch(Throwable t) {
+                    } catch (Throwable t) {
                         t.printStackTrace();
                     }
                 }
@@ -50,5 +47,5 @@ public class CallbackServiceImpl implements CallbackService {
     private String getChanged(String key) {
         return "Changed: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
-    
+
 }

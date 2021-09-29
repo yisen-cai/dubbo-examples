@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = {ElementType.METHOD, ElementType.TYPE})
+@Target(value = { ElementType.METHOD, ElementType.TYPE })
 public @interface CommonHandling {
 
     /**

@@ -8,10 +8,10 @@ public interface AsyncService {
      * 使用CompletableFuture实现
      * 
      * @param name
+     * 
      * @return
      */
     CompletableFuture<String> sayHello(String name);
-
 
     String sayHelloAgain(String name);
 }

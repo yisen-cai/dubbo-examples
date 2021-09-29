@@ -34,7 +34,7 @@ public class BookServiceImpl implements BookService {
 
     @CommonHandling(message = "hello", countLastTime = true, errPropagating = true)
     @Override
-    public BookDTO addBook(BookDTO bookDTO) {        
+    public BookDTO addBook(BookDTO bookDTO) {
         if (bookDTO.getName().contains("Book")) {
             throw new RuntimeException("非法参数");
         }

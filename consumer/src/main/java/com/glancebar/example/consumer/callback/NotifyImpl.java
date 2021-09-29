@@ -19,12 +19,12 @@ public class NotifyImpl implements Notify {
     @Override
     public void onReturn(Person msg, Integer id) {
         logger.info("On return: {}", msg);
-        ret.put(id, msg); 
+        ret.put(id, msg);
     }
 
     @Override
     public void onThrow(Throwable ex, Integer id) {
-       errors.put(id, ex); 
+        errors.put(id, ex);
     }
-    
+
 }

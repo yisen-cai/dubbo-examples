@@ -15,11 +15,12 @@ public interface BookService {
     /**
      * 关键字模糊搜索
      *
-     * @param kw 搜索关键字
+     * @param kw
+     *            搜索关键字
+     * 
      * @return book列表
      */
     List<BookDTO> searchByMatch(String kw);
-
 
     BookDTO addBook(BookDTO bookDTO);
 }
